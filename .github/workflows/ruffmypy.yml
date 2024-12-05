@@ -25,6 +25,6 @@ jobs:
         run: pipx install mypy
       
       - name: Send greeting
-        run: ruff
+        run: ruff check
       - name: mypy
         run: mypy
