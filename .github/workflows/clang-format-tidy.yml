@@ -1,0 +1,25 @@
+name: Clang C++
+
+on:
+  push:
+    branches: [ "ahuang9999-actions" ]
+  pull_request:
+    branches: [ "ahuang9999-actions" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: configure
+      run: ./configure
+    - name: INSTALL
+      run: conan install clang-tidy
+    - name: INSTALL2
+      run: conan install clang-format
+    - name: run1
+      run: clang-tidy
+    - name: run2
+      run: clang-format
