@@ -13,6 +13,8 @@ jobs:
 
     steps:
 
+    - name: conan
+      run: pipx install conan
     - name: INSTALL
       run: conan install clang-tidy
     - name: INSTALL2
