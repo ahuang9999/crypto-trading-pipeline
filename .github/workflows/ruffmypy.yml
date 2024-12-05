@@ -27,4 +27,4 @@ jobs:
       - name: Send greeting
         run: ruff check
       - name: mypy
-        run: mypy
+        run: mypy .
