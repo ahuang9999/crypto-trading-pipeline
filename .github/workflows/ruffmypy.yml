@@ -21,7 +21,11 @@ jobs:
     steps:
 
       - name: pipx
-        run: python3 -m pip install --user pipx
+        run: |
+          python3 -m pip install --user pipx
+          python3 -m pipx ensurepath
+          export PATH=$PATH:~/.local/bin
+      
       
       - name: Install
         run: pipx install ruff
