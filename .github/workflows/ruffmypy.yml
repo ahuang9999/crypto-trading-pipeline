@@ -37,7 +37,7 @@ jobs:
       - name: Install2
         run: pipx install mypy
       - name: mypy
-        run: mypy project/
+        run: mypy src/
       
       
     
