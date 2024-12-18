@@ -4,7 +4,6 @@ on:
   push:
     branches: [ "ahuang9999-actions" ]
   pull_request:
-    branches: [ "ahuang9999-actions" ]
 
 jobs:
   build:
@@ -13,13 +12,17 @@ jobs:
 
     steps:
 
-    - name: conan
-      run: pipx install conan
-    - name: INSTALL
-      run: conan install clang-tidy
-    - name: INSTALL2
-      run: conan install clang-format
-    - name: run1
-      run: clang-tidy
-    - name: run2
-      run: clang-format
+    - uses: actions/checkout@v4
+
+    
+    - name: Install
+      run: |
+        sudo apt update
+        sudo apt install clang-tidy
+        sudo apt install clang-format
+
+    - name: tidy
+      run: find src/cppsrc/ -name '*.cpp' | xargs clang-tidy -i
+
+    - name: format
+      run: find src/cppsrc/ -name '*.cpp' | xargs clang-format -i
