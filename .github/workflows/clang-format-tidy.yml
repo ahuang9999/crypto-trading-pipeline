@@ -22,7 +22,7 @@ jobs:
         sudo apt install clang-format
 
     - name: tidy
-      run: find src/cppsrc/ -name '*.cpp' | xargs clang-tidy -i
+      run: find src/cppsrc/ -name '*.cpp' | xargs clang-tidy
 
     - name: format
-      run: find src/cppsrc/ -name '*.cpp' | xargs clang-format -i
+      run: find src/cppsrc/ -name '*.cpp' | xargs clang-format
