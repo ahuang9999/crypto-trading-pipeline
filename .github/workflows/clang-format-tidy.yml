@@ -26,6 +26,8 @@ jobs:
         poetry update
         sudo apt install clang-tidy
         sudo apt install clang-format
+        sudo apt install ninja
+        sudo apt install cmake
 
     - run: conan profile detect
         
