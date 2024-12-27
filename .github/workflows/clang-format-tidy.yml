@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  format:
 
     runs-on: ubuntu-latest
 
@@ -21,8 +21,11 @@ jobs:
         sudo apt install clang-tidy
         sudo apt install clang-format
 
-    - name: tidy
-      run: find src/cppsrc/ -name '*.cpp' | xargs clang-tidy
+    #- name: tidy
+    #  run: find src/cppsrc/ -name '*.cpp' | xargs clang-tidy
 
-    - name: format
-      run: find src/cppsrc/ -name '*.cpp' | xargs clang-format
+    #- name: format
+    #  run: find src/cppsrc/ -name '*.cpp' | xargs clang-format
+
+    - name: run
+      run: make format
