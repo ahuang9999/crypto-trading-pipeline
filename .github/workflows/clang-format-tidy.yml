@@ -23,6 +23,7 @@ jobs:
         sudo apt install clang-tidy
         sudo apt install clang-format
 
+    - run: conan profile detect
         
     - name: build
       run: make build
