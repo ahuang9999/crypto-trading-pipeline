@@ -13,22 +13,31 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   
-  lint:
+  test:
     
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/setup-python@v4
+      with: 
+        python-version: '3.12'
+    
+    - name: Install
+      run: |
+        sudo apt update
+        pipx install conan
+        pipx install poetry
+        poetry update
+        sudo apt install clang-tidy
+        sudo apt install clang-format
+        sudo apt install cmake
+        pipx install ninja
+        
+    - run: conan profile detect
 
-      - name: pipx
-        run: |
-          python3 -m pip install --user pipx
-      
-      - name: Install
-        run: pipx install pytest
-      - name: pyt
-        run: pytest
+    - name: lint
+      run: make test
       
       
