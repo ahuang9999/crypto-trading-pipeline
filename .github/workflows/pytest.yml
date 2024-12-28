@@ -23,19 +23,12 @@ jobs:
     - uses: actions/setup-python@v4
       with: 
         python-version: '3.12'
-
-    - name: Confirm pyproject.toml Location
-      run: |
-        pwd
-        ls -al
-        find . -name "pyproject.toml"
     
     - name: Install
       run: |
         sudo apt update
         pipx install conan
         pipx install poetry
-        poetry update
         sudo apt install clang-tidy
         sudo apt install clang-format
         sudo apt install cmake
