@@ -23,6 +23,12 @@ jobs:
     - uses: actions/setup-python@v4
       with: 
         python-version: '3.12'
+
+    - name: Confirm pyproject.toml Location
+      run: |
+        pwd
+        ls -al
+        find . -name "pyproject.toml"
     
     - name: Install
       run: |
