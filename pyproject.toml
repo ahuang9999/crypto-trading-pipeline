@@ -2,7 +2,7 @@
 name = "intern-project"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Alexander Huang <alexhuang240@gmail.com>"]
 readme = "README.md"
 packages = [
   {include = "pysrc", from = "src"}
