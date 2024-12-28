@@ -37,7 +37,9 @@ jobs:
         
     - run: conan profile detect
 
-    - name: lint
+    - run: make build
+
+    - name: test
       run: make test
       
       
