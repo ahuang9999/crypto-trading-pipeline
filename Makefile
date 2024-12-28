@@ -15,7 +15,7 @@ install:
 
 test: build
 	@cd build && ./intern_tests
-	@poetry run pytest $(PY_SRC)/test
+	@cd $(PY_SRC) && poetry run pytest test
 
 clean:
 	@rm -rf build
