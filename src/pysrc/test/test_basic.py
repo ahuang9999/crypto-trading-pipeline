@@ -1,5 +1,5 @@
 from unittest.mock import patch,Mock
-import data_client
+import src.data_client
 
 @patch('requests.get')
 def test_get_data(self, mock_get):
