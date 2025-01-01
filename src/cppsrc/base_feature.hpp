@@ -11,5 +11,9 @@ class BaseFeature
     virtual ~BaseFeature() {}
 };
 
+class NumberOfTradesFeature
+{
+
+}
 
 }// namespace intproj
