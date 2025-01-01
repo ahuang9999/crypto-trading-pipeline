@@ -36,7 +36,6 @@ jobs:
         sudo apt install clang-format
         sudo apt install cmake
         pipx install ninja
-        pipx install pytest-mock
         pipx install requests
         
     - run: conan profile detect
