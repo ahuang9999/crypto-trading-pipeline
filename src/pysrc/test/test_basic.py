@@ -26,5 +26,6 @@ def test_get_data(mocker):
 def test_basic() -> None:
     assert True
 
+
 if __name__ == "__data_client__":
     pytest.main()

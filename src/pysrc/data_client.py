@@ -13,6 +13,7 @@ class DataClient:
     def _query_api(self, sandbox) -> None:
 
         if sandbox==False:
+        if sandbox==False:
             base_url = "https://api.gemini.com/v1"
         else:
             base_url = "https://api.sandbox.gemini.com/v1"

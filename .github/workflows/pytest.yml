@@ -20,6 +20,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
+    - uses: actions/checkout@v4
+    
     - uses: actions/setup-python@v4
       with: 
         python-version: '3.12'
@@ -29,7 +32,6 @@ jobs:
         sudo apt update
         pipx install conan
         pipx install poetry
-        poetry update
         sudo apt install clang-tidy
         sudo apt install clang-format
         sudo apt install cmake
@@ -37,7 +39,7 @@ jobs:
         
     - run: conan profile detect
 
-    - name: lint
+    - name: test
       run: make test
       
       
