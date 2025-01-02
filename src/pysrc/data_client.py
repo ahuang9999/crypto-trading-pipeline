@@ -13,7 +13,6 @@ class DataClient:
     def _query_api(self, sandbox) -> None:
 
         if sandbox==False:
-        if sandbox==False:
             base_url = "https://api.gemini.com/v1"
         else:
             base_url = "https://api.sandbox.gemini.com/v1"
@@ -34,10 +33,7 @@ class DataClient:
         else:
             for x in message:
                 if isinstance(x,str): break
-                try:
-                    self.timestamps.append(x['timestamp'])
-                except TypeError as e:
-                    print(x)
+                self.timestamps.append(x['timestamp'])
                 self.timestampsms.append(x['timestampms'])
                 self.tids.append(x['tid'])
                 self.prices.append(x['price'])
