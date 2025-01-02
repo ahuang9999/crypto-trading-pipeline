@@ -37,7 +37,7 @@ jobs:
         sudo apt install cmake
         pipx install ninja
         poetry add requests
-        pip install --user pytest-mock
+        poetry add pytest-mock
         
     - run: conan profile detect
 
