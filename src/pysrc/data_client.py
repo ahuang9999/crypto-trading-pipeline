@@ -1,6 +1,6 @@
-import requests, json
+import requests, json, time
 
-class DataClient:
+class DataClient:   
     def __init__(self):
         self.timestamps = []
         self.timestampsms = []
@@ -16,7 +16,9 @@ class DataClient:
             base_url = "https://api.gemini.com/v1"
         else:
             base_url = "https://api.sandbox.gemini.com/v1"
-        response = requests.get(base_url + "/trades/btcusd")
+        current_time = round(time.time()*1000)
+
+        response = requests.get(base_url + "/trades/btcusd" + "?timestampms=" + str(current_time-1000))
         btcusd_trades = response.json()
         
         self._parse_message(btcusd_trades)
@@ -46,4 +48,3 @@ class DataClient:
         self._query_api(sandbox)
         return {"timestamps":self.timestamps, "timestampsms":self.timestampsms, "tids":self.tids, "prices":self.prices, 
                "amounts":self.amounts, "exchanges":self.exchanges, "types":self.types}
-
