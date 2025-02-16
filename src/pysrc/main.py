@@ -3,7 +3,8 @@ import argparse
 #print("\n\n")
 #print(sys.path)
 #print("\n\n")
-import intern
+import intern # type: ignore 
+import time
 from collections import deque
 from sklearn import linear_model
 from pysrc.data_client import DataClient
@@ -27,37 +28,50 @@ def FiveTickVolumeFeature(data):
     obj = intern.FiveTickVolumeFeature()
     return obj.compute_feature(data)
 
+def buffer(ticks,targets) -> tuple[float,float]:
+    X = []
+    for trades in ticks:
+        features = [NTradesFeature(trades), PercentBuyFeature(trades),
+                    PercentSellFeature(trades), FiveTickVolumeFeature(trades)]
+        X.append(features)
+    clf = linear_model.Lasso(alpha=0.1)
+    clf.fit(X,targets)
+    return clf.coef_, clf.intercept_
+
 def main():
     t = 1
-    ticks = []
-    prices = []
-    return1s = []
+    ticks: deque[list[tuple[float,float,bool]]] = deque(maxlen=10)
+    targets: deque[float] = deque(maxlen=10)
+    curMidprice: float = -5000.0
     while True:
-        
+        print("Time = "+str(t)+"\n")
         obj = DataClient()
         trades_last_tick = obj.get_data(False)
-        temp = []
-        for i in range(len(trades_last_tick["prices"])-1):
-            tempTuple = (trades_last_tick["prices"][0],trades_last_tick["amounts"][0],trades_last_tick["types"][0])
-            temp.append(tempTuple)
-            
-        ticks.append(temp)
-        prices.append(trades_last_tick["prices"][0])
-        if (len(prices)>=2):
-            return1s.append( (prices[len(prices)-1]-prices[len(prices)-2])/prices[len(prices)-2] )
+        tupleList = []
+        for data in trades_last_tick["buys"]:
+            #data is pair of buys,amounts
+            tempTuple = (data[0],round(data[0]*data[1],2),True)
+            tupleList.append(tempTuple)
+        for data in trades_last_tick["sells"]:
+            #data is pair of sells,amounts
+            tempTuple = (data[0],round(data[0]*data[1],2),False)
+            tupleList.append(tempTuple)
+        
+        if (not curMidprice==-5000.0):
+            targets.append(trades_last_tick["midprice"]-curMidprice)
+        curMidprice = trades_last_tick["midprice"]
+        ticks.append(tupleList)
+
+        t+=1
+        time.sleep(1)
         if t<=10:
             continue
 
         else:
             #clf = linear_model.Lasso(alpha=0.5)
-            t+=1
-            X = []
-            for trades in ticks:
-                features = [NTradesFeature(trades), PercentBuyFeature(trades),
-                            PercentSellFeature(trades), FiveTickVolumeFeature(trades)]
-                X.append(features)
-            clf = linear_model.Lasso(alpha=0.1)
-            clf.fit(X,prices)
+            buffer(ticks,targets)
 
 
-        t+=1
+
+if __name__=="__main__":
+    main()
