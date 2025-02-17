@@ -36,7 +36,8 @@ jobs:
         sudo apt install clang-format
         sudo apt install cmake
         pipx install ninja
-        sudo pip install requests
+        poetry add requests
+        poetry add pytest-mock
         
     - run: conan profile detect
 
