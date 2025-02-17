@@ -1,0 +1,44 @@
+[
+{
+  "directory": "/home/ahuang9999/fintech-intern-project",
+  "command": "/usr/bin/c++  -isystem /usr/include/python3.12 -isystem /home/ahuang9999/.cache/pypoetry/virtualenvs/intern-project-sOTACgVk-py3.12/include  -O3 -o CMakeFiles/intern_project.dir/src/cppsrc/main.cpp.o -c /home/ahuang9999/fintech-intern-project/src/cppsrc/main.cpp",
+  "file": "/home/ahuang9999/fintech-intern-project/src/cppsrc/main.cpp",
+  "output": "CMakeFiles/intern_project.dir/src/cppsrc/main.cpp.o"
+},
+{
+  "directory": "/home/ahuang9999/fintech-intern-project",
+  "command": "/usr/bin/c++  -I/home/ahuang9999/fintech-intern-project/src -isystem /usr/include/python3.12 -isystem /home/ahuang9999/.cache/pypoetry/virtualenvs/intern-project-sOTACgVk-py3.12/include  -O3 -o CMakeFiles/intern_tests.dir/src/cppsrc/test/test_basic.cpp.o -c /home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_basic.cpp",
+  "file": "/home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_basic.cpp",
+  "output": "CMakeFiles/intern_tests.dir/src/cppsrc/test/test_basic.cpp.o"
+},
+{
+  "directory": "/home/ahuang9999/fintech-intern-project",
+  "command": "/usr/bin/c++  -I/home/ahuang9999/fintech-intern-project/src -isystem /usr/include/python3.12 -isystem /home/ahuang9999/.cache/pypoetry/virtualenvs/intern-project-sOTACgVk-py3.12/include  -O3 -o CMakeFiles/intern_tests.dir/src/cppsrc/test/test_feature_n_trades.cpp.o -c /home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_feature_n_trades.cpp",
+  "file": "/home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_feature_n_trades.cpp",
+  "output": "CMakeFiles/intern_tests.dir/src/cppsrc/test/test_feature_n_trades.cpp.o"
+},
+{
+  "directory": "/home/ahuang9999/fintech-intern-project",
+  "command": "/usr/bin/c++  -I/home/ahuang9999/fintech-intern-project/src -isystem /usr/include/python3.12 -isystem /home/ahuang9999/.cache/pypoetry/virtualenvs/intern-project-sOTACgVk-py3.12/include  -O3 -o CMakeFiles/intern_tests.dir/src/cppsrc/test/test_feature_pct_buy_trades.cpp.o -c /home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_feature_pct_buy_trades.cpp",
+  "file": "/home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_feature_pct_buy_trades.cpp",
+  "output": "CMakeFiles/intern_tests.dir/src/cppsrc/test/test_feature_pct_buy_trades.cpp.o"
+},
+{
+  "directory": "/home/ahuang9999/fintech-intern-project",
+  "command": "/usr/bin/c++  -I/home/ahuang9999/fintech-intern-project/src -isystem /usr/include/python3.12 -isystem /home/ahuang9999/.cache/pypoetry/virtualenvs/intern-project-sOTACgVk-py3.12/include  -O3 -o CMakeFiles/intern_tests.dir/src/cppsrc/test/test_feature_pct_sell_trades.cpp.o -c /home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_feature_pct_sell_trades.cpp",
+  "file": "/home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_feature_pct_sell_trades.cpp",
+  "output": "CMakeFiles/intern_tests.dir/src/cppsrc/test/test_feature_pct_sell_trades.cpp.o"
+},
+{
+  "directory": "/home/ahuang9999/fintech-intern-project",
+  "command": "/usr/bin/c++  -I/home/ahuang9999/fintech-intern-project/src -isystem /usr/include/python3.12 -isystem /home/ahuang9999/.cache/pypoetry/virtualenvs/intern-project-sOTACgVk-py3.12/include  -O3 -o CMakeFiles/intern_tests.dir/src/cppsrc/test/test_feature_sum_5tick_volume.cpp.o -c /home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_feature_sum_5tick_volume.cpp",
+  "file": "/home/ahuang9999/fintech-intern-project/src/cppsrc/test/test_feature_sum_5tick_volume.cpp",
+  "output": "CMakeFiles/intern_tests.dir/src/cppsrc/test/test_feature_sum_5tick_volume.cpp.o"
+},
+{
+  "directory": "/home/ahuang9999/fintech-intern-project",
+  "command": "/usr/bin/c++ -Dintern_EXPORTS -isystem /usr/include/python3.12 -isystem /home/ahuang9999/.cache/pypoetry/virtualenvs/intern-project-sOTACgVk-py3.12/include  -O3 -fPIC -fvisibility=hidden -flto -fno-fat-lto-objects -o CMakeFiles/intern.dir/src/cppsrc/main.cpp.o -c /home/ahuang9999/fintech-intern-project/src/cppsrc/main.cpp",
+  "file": "/home/ahuang9999/fintech-intern-project/src/cppsrc/main.cpp",
+  "output": "CMakeFiles/intern.dir/src/cppsrc/main.cpp.o"
+}
+]

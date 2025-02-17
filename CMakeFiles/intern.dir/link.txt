@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -O3 -flto -shared  -o intern.cpython-312-x86_64-linux-gnu.so CMakeFiles/intern.dir/src/cppsrc/main.cpp.o

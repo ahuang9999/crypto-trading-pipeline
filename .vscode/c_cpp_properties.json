@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${default}"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang", 
+            "cStandard": "c17",
+            "intelliSenseMode": "linux-clang-x64",
+            "browse": {
+                "path": [
+                    "/home/ahuang9999/.cache/pypoetry/virtualenvs/intern-project-sOTACgVk-py3.12/lib/python3.12/site-packages"
+                ]
+            }
+        }
+    ],
+    "version": 4
+}

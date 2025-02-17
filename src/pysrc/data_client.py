@@ -2,13 +2,9 @@ import requests, json, time
 
 class DataClient:   
     def __init__(self):
-        self.timestamps = []
-        self.timestampsms = []
-        self.tids = []
-        self.prices = []
-        self.amounts = []
-        self.exchanges = []
-        self.types = []
+        self.buys: list[tuple[float, float]] = []
+        self.sells: list[tuple[float, float]] = []
+        self.midprice: float
 
     def _query_api(self, sandbox) -> None:
 
@@ -24,27 +20,24 @@ class DataClient:
         self._parse_message(btcusd_trades)
 
     def _parse_message(self, message):
-        if isinstance(message,dict):
-            self.timestamps = message["timestamps"]
-            self.timestampsms = message["timestampsms"]
-            self.tids = message["tids"]
-            self.prices = message["prices"]
-            self.amounts = message["amounts"]
-            self.exchanges = message["exchanges"]
-            self.types = message["types"]
-        else:
-            for x in message:
-                if isinstance(x,str): break
-                self.timestamps.append(x['timestamp'])
-                self.timestampsms.append(x['timestampms'])
-                self.tids.append(x['tid'])
-                self.prices.append(x['price'])
-                self.amounts.append(x['amount'])
-                self.exchanges.append(x['exchange'])
-                self.types.append(x['type'])
+        lowestAsk: float = 1000000.0
+        highestBid: float = 0.0
+        for x in message:
+            if isinstance(x,str): break
+            if x["type"] == "buy":
+                elPrice: float = float(x["price"])
+                if elPrice<lowestAsk:
+                    lowestAsk = elPrice
+                self.buys.append((elPrice,float(x["amount"])))
+            else:
+                elPrice: float = float(x["price"])
+                if elPrice>highestBid:
+                    highestBid = elPrice
+                self.sells.append((elPrice,float(x["amount"])))
+        self.midprice = (lowestAsk+highestBid)/2
+            
         
 
     def get_data(self, sandbox):
         self._query_api(sandbox)
-        return {"timestamps":self.timestamps, "timestampsms":self.timestampsms, "tids":self.tids, "prices":self.prices, 
-               "amounts":self.amounts, "exchanges":self.exchanges, "types":self.types}
+        return {"buys": self.buys, "sells": self.sells, "midprice": self.midprice}

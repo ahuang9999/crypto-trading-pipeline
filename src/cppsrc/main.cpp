@@ -26,13 +26,13 @@ PYBIND11_MODULE(intern, m)
         .def(py::init<>())
         .def("Compute feature", &BaseFeature::compute_feature);
 
-    py::class_<NTradesFeature, BaseFeature>(m, "Number of trades feature")
+    py::class_<NTradesFeature, BaseFeature>(m, "NTradesFeature")
         .def(py::init<>());
-    py::class_<PercentBuyFeature, BaseFeature>(m, "Buy percentage feature")
+    py::class_<PercentBuyFeature, BaseFeature>(m, "PercentBuyFeature")
         .def(py::init<>());
-    py::class_<PercentSellFeature, BaseFeature>(m, "Sell percentage feature")
+    py::class_<PercentSellFeature, BaseFeature>(m, "PercentSellFeature")
         .def(py::init<>());
-    py::class_<FiveTickVolumeFeature, BaseFeature>(m, "Volume in last 5 ticks feature")
+    py::class_<FiveTickVolumeFeature, BaseFeature>(m, "FiveTickVolumeFeature")
         .def(py::init<>());
 }
 
