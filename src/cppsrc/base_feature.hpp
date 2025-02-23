@@ -33,7 +33,7 @@ class PercentBuyFeature : public BaseFeature
         for (auto t : data) {
             if (get<2>(t)) buy++;
         }
-        return buy / total;
+        return buy/total;
     }
 };
 
@@ -47,7 +47,7 @@ class PercentSellFeature : public BaseFeature
         for (auto t : data) {
             if (!(get<2>(t))) sell++;
         }
-        return roundf(sell / total * 100) / 100.0;
+        return sell/total;
     }
 };
 

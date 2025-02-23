@@ -20,7 +20,7 @@ float call_compute_feature(BaseFeature *feat)
     return feat->compute_feature({});
 }
 
-PYBIND11_MODULE(intern, m)
+PYBIND11_MODULE(my_intern, m)
 {
     m.doc() = "Feature computation";
     m.def("call_compute_feature", &call_compute_feature);

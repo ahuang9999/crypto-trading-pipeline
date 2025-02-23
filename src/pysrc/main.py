@@ -1,5 +1,5 @@
 import argparse
-import intern  # type: ignore
+import my_intern  # type: ignore
 import time
 from collections import deque
 from sklearn import linear_model
@@ -11,25 +11,25 @@ if __name__ == "__main__":
 
 
 def NTradesFeature(data: list[tuple[float, float, bool]]) -> float:
-    obj = intern.NTradesFeature()
+    obj = my_intern.NTradesFeature()
     compute: float = obj.compute_feature(data)
     return compute
 
 
 def PercentBuyFeature(data: list[tuple[float, float, bool]]) -> float:
-    obj = intern.PercentBuyFeature()
+    obj = my_intern.PercentBuyFeature()
     compute: float = obj.compute_feature(data)
     return compute
 
 
 def PercentSellFeature(data: list[tuple[float, float, bool]]) -> float:
-    obj = intern.PercentSellFeature()
+    obj = my_intern.PercentSellFeature()
     compute: float = obj.compute_feature(data)
     return compute
 
 
 def FiveTickVolumeFeature(data: list[tuple[float, float, bool]]) -> float:
-    obj = intern.FiveTickVolumeFeature()
+    obj = my_intern.FiveTickVolumeFeature()
     compute: float = obj.compute_feature(data)
     return compute
 

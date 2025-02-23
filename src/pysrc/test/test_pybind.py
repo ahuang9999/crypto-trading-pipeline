@@ -1,5 +1,5 @@
 import pytest
-from pysrc import intern  # type: ignore
+import my_intern # type: ignore
 from pysrc.main import (
     NTradesFeature,
     PercentBuyFeature,
@@ -9,7 +9,7 @@ from pysrc.main import (
 
 
 def test_pybind() -> None:
-    assert intern.add(4, 5) == 9
+    assert my_intern.add(4, 5) == 9
 
 
 def test_ntrades() -> None:
