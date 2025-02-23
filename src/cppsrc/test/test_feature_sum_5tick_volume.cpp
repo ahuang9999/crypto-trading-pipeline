@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
 #include "../base_feature.hpp"
+#include <gtest/gtest.h>
 using namespace intproj;
 
 TEST(FeatureTests, TestSum5TickVolume)

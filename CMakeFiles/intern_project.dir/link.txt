@@ -1,1 +1,0 @@
-/usr/bin/c++  -O3 CMakeFiles/intern_project.dir/src/cppsrc/main.cpp.o -o intern_project  /usr/lib64/libpython3.12.so /usr/lib64/libpython3.12.so
