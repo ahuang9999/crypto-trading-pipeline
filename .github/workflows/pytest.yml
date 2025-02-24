@@ -32,6 +32,7 @@ jobs:
         make install_dependencies
         sudo apt install ninja-build
         pip install scikit-learn
+        pip install requests
       
         
     - name: Project files
