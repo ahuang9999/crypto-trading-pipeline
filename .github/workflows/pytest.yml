@@ -28,14 +28,12 @@ jobs:
         python-version: '3.12'
     
     - name: Install
-      run: |
-        python -m pip install --upgrade pip
-        pipx install poetry
+      run: make install_dependencies
         
     - name: Project files
       run: make install
 
-    - name: tests
-      run: make test
+    - name: python tests
+      run: make python_test
       
       
