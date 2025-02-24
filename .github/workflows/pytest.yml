@@ -33,6 +33,7 @@ jobs:
         sudo apt install ninja-build
         poetry add scikit-learn
         poetry add requests
+        poetry add pytest-mock
       
         
     - name: Project files
