@@ -28,7 +28,10 @@ jobs:
         python-version: '3.12'
     
     - name: Install
-      run: make install_dependencies
+      run: |
+        make install_dependencies
+        sudo apt install ninja-build
+      
         
     - name: Project files
       run: poetry install
