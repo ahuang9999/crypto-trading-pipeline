@@ -29,19 +29,15 @@ jobs:
     
     - name: Install
       run: |
-        sudo apt update
-        pipx install conan
-        pipx install poetry
-        sudo apt install clang-tidy
-        sudo apt install clang-format
-        sudo apt install cmake
-        pipx install ninja
-        poetry add requests
-        poetry add pytest-mock
+        make install_dependencies
+        sudo apt install ninja-build
+        pip install scikit-learn
+      
         
-    - run: conan profile detect
+    - name: Project files
+      run: poetry install
 
-    - name: test
-      run: make test
+    - name: python tests
+      run: make python_test
       
       

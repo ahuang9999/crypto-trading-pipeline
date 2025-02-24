@@ -19,20 +19,12 @@ jobs:
         python-version: '3.12'
     
     - name: Install
-      run: |
-        sudo apt update
-        pipx install conan
-        pipx install poetry
-        poetry update
-        sudo apt install clang-tidy
-        sudo apt install clang-format
-        sudo apt install cmake
-        pipx install ninja
-        
+      run: make install_dependencies
 
-    - run: conan profile detect
-        
-    - name: build
+    - name: Ninja
+      run: sudo apt install ninja-build
+      
+    - name: Install files
       run: make build
 
     #- name: tidy
@@ -42,4 +34,4 @@ jobs:
     #  run: find src/cppsrc/ -name '*.cpp' | xargs clang-format
 
     - name: run
-      run: make format
+      run: make cpplint
