@@ -31,8 +31,8 @@ jobs:
       run: |
         make install_dependencies
         sudo apt install ninja-build
-        pip install scikit-learn
-        pip install requests
+        poetry add scikit-learn
+        poetry add requests
       
         
     - name: Project files
