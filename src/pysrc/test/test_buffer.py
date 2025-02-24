@@ -2,6 +2,7 @@ import pytest
 from pysrc.main import buffer
 from collections import deque
 
+
 def test_buffer() -> None:
     ticks = [
         [(97381.02, 973.81, False)],

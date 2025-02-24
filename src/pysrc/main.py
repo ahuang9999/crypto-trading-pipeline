@@ -1,5 +1,5 @@
 import argparse
-import my_intern  # type: ignore
+from pysrc import my_intern
 import time
 from collections import deque
 from sklearn import linear_model
@@ -9,28 +9,29 @@ import numpy as np
 if __name__ == "__main__":
     pass
 
+NTrades_obj = my_intern.NTradesFeature()
+PctBuy_obj = my_intern.PercentBuyFeature()
+PctSell_obj = my_intern.PercentSellFeature()
+FiveTick_obj = my_intern.FiveTickVolumeFeature()
+
 
 def NTradesFeature(data: list[tuple[float, float, bool]]) -> float:
-    obj = my_intern.NTradesFeature()
-    compute: float = obj.compute_feature(data)
+    compute: float = NTrades_obj.compute_feature(data)
     return compute
 
 
 def PercentBuyFeature(data: list[tuple[float, float, bool]]) -> float:
-    obj = my_intern.PercentBuyFeature()
-    compute: float = obj.compute_feature(data)
+    compute: float = PctBuy_obj.compute_feature(data)
     return compute
 
 
 def PercentSellFeature(data: list[tuple[float, float, bool]]) -> float:
-    obj = my_intern.PercentSellFeature()
-    compute: float = obj.compute_feature(data)
+    compute: float = PctSell_obj.compute_feature(data)
     return compute
 
 
 def FiveTickVolumeFeature(data: list[tuple[float, float, bool]]) -> float:
-    obj = my_intern.FiveTickVolumeFeature()
-    compute: float = obj.compute_feature(data)
+    compute: float = FiveTick_obj.compute_feature(data)
     return compute
 
 
