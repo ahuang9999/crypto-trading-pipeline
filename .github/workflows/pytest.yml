@@ -28,7 +28,9 @@ jobs:
         python-version: '3.12'
     
     - name: Install
-      run: make install_dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pipx install poetry
         
     - name: Project files
       run: make install
