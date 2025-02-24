@@ -33,7 +33,7 @@ jobs:
         pipx install poetry
         
     - name: Project files
-      run: make install
+      run: poetry install
 
     - name: python tests
       run: make python_test
