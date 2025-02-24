@@ -28,19 +28,11 @@ jobs:
     
     - name: Install
       run: |
-        sudo apt update
-        pipx install conan
+        python -m pip install --upgrade pip
         pipx install poetry
-        poetry update
-        sudo apt install clang-tidy
-        sudo apt install clang-format
-        sudo apt install cmake
-        pipx install ninja
         
-    - run: conan profile detect
-        
-    - name: build
-      run: make build
+    - name: Install packages
+      run: make install
 
     - name: lint
       run: make lint
