@@ -27,10 +27,17 @@ jobs:
         python-version: '3.12'
     
     - name: Install
-      run: make install_dependencies
+      run: |
+        make install_dependencies
+        sudo apt install ninja-build
+        poetry add requests
+        poetry add pytest-mock
+        poetry add scikit-learn
         
     - name: Install packages
-      run: make install
+      run: | 
+        make install
+        python3 -m pip install types-requests
 
     - name: pylint
       run: make pylint
