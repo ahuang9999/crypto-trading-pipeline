@@ -1,9 +1,9 @@
 import pytest
+from pytest_mock import MockerFixture
 from pysrc.data_client import DataClient
 
 
-# @pytest.fixture(scope="function")
-def test_get_data(mocker) -> None:
+def test_get_data(mocker: MockerFixture) -> None:
     mock_api_response = [
         {"price": "95993.4", "amount": "0.00049765", "type": "buy"},
         {"price": "93030.33", "amount": "0.00001", "type": "sell"},

@@ -1,5 +1,5 @@
 import pytest
-from pysrc import my_intern
+from pysrc import my_intern  # type: ignore
 
 
 def test_ntrades() -> None:
