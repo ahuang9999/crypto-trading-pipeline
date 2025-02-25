@@ -37,7 +37,7 @@ jobs:
     - name: Install packages
       run: | 
         make install
-        mypy --install-types
+        python3 -m pip install types-requests
 
     - name: pylint
       run: make pylint
