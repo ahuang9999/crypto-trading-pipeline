@@ -27,7 +27,12 @@ jobs:
         python-version: '3.12'
     
     - name: Install
-      run: make install_dependencies
+      run: |
+        make install_dependencies
+        sudo apt install ninja-build
+        poetry add requests
+        poetry add pytest-mock
+        poetry add scikit-learn
         
     - name: Install packages
       run: make install
