@@ -35,7 +35,9 @@ jobs:
         poetry add scikit-learn
         
     - name: Install packages
-      run: make install
+      run: | 
+        make install
+        mypy --install-types
 
     - name: pylint
       run: make pylint
