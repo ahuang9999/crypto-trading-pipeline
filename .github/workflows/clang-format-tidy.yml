@@ -1,0 +1,37 @@
+name: Clang C++
+
+on:
+  push:
+    branches: [ "ahuang9999-actions" ]
+  pull_request:
+
+jobs:
+  format:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v4
+      with: 
+        python-version: '3.12'
+    
+    - name: Install
+      run: make install_dependencies
+
+    - name: Ninja
+      run: sudo apt install ninja-build
+      
+    - name: Install files
+      run: make build
+
+    #- name: tidy
+    #  run: find src/cppsrc/ -name '*.cpp' | xargs clang-tidy
+
+    #- name: format
+    #  run: find src/cppsrc/ -name '*.cpp' | xargs clang-format
+
+    - name: run
+      run: make cpplint
