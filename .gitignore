@@ -9,3 +9,5 @@ __pycache__
 .vscode/settings.json
 .vscode/c_cpp_properties.json
 .vscode/tasks.json
+.vscode/compile_commands.json
+.vscode/CMakeUserPresets.json
