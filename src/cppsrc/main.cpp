@@ -1,10 +1,11 @@
-#include "base_feature.hpp"
+#include "fivetick_feature.hpp"
+#include "ntrades_feature.hpp"
+#include "pctbuy_feature.hpp"
+#include "pctsell_feature.hpp"
 #include <iostream>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
-
-// PYBIND11_MAKE_OPAQUE(std::vector<std::tuple<float, float, bool>>)
 
 using namespace intproj;
 namespace py = pybind11;

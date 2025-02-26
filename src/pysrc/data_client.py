@@ -11,20 +11,19 @@ class DataClient:
 
     def _query_api(self, sandbox: bool) -> None:
         if sandbox:
-            base_url = (
-                "https://api.gemini.com/v1/trades/btcusd?since_tid=0&limit_trades=3"
-            )
-            response = requests.get(base_url)
+            base_url = "https://api.sandbox.gemini.com/v1/trades/btcusd?since_tid=0&limit_trades=3"
         else:
-            base_url = "https://api.sandbox.gemini.com/v1"
-            current_time = time.time()
-            response = requests.get(
-                base_url + "/trades/btcusd" + "?timestamp=" + str(current_time)
-            )
+            base_url = "https://api.gemini.com/v1"
+            current_time = int(time.time())
+            base_url += f"/trades/btcusd?timestamp={current_time-10}"
 
-        btcusd_trades = response.json()
-
-        self._parse_message(btcusd_trades)
+        try:
+            response = requests.get(base_url, timeout=10)
+            if response.text.strip():
+                btcusd_trades = response.json()
+                self._parse_message(btcusd_trades)
+        except json.JSONDecodeError:
+            pass
 
     def _parse_message(self, message: list[dict]) -> None:
         lowestAsk: float = 1000000.0
@@ -41,7 +40,10 @@ class DataClient:
                 if elPrice > highestBid:
                     highestBid = elPrice
                 self.sells.append((elPrice, float(x["amount"])))
-        self.midprice = round((lowestAsk + highestBid) / 2, 3)
+        if lowestAsk == 1000000.0 or highestBid == 0.0:
+            self.midprice = -2
+        else:
+            self.midprice = round((lowestAsk + highestBid) / 2, 3)
 
     def get_data(self, sandbox: bool) -> dict:
         self._query_api(sandbox)
