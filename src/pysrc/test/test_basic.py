@@ -12,7 +12,7 @@ def test_get_data(mocker: MockerFixture) -> None:
     mock_data = {
         "buys": [(95993.4, 0.00049765)],
         "sells": [(93030.33, 0.00001), (93030.33, 0.0001)],
-        "midprice": 94511.865,
+        "midprice": 94511.86,
     }
 
     mock_response = mocker.MagicMock()

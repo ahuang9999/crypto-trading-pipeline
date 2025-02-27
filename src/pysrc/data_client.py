@@ -2,6 +2,8 @@ import requests  # type: ignore
 import json
 import time
 
+TIME_BETWEEN_TICKS = 30
+
 
 class DataClient:
     def __init__(self) -> None:
@@ -15,10 +17,10 @@ class DataClient:
         else:
             base_url = "https://api.gemini.com/v1"
             current_time = int(time.time())
-            base_url += f"/trades/btcusd?timestamp={current_time-10}"
+            base_url += f"/trades/btcusd?timestamp={current_time-TIME_BETWEEN_TICKS}"
 
         try:
-            response = requests.get(base_url, timeout=10)
+            response = requests.get(base_url)
             if response.text.strip():
                 btcusd_trades = response.json()
                 self._parse_message(btcusd_trades)
@@ -43,7 +45,7 @@ class DataClient:
         if lowestAsk == 1000000.0 or highestBid == 0.0:
             self.midprice = -2
         else:
-            self.midprice = round((lowestAsk + highestBid) / 2, 3)
+            self.midprice = round((lowestAsk + highestBid) / 2, 2)
 
     def get_data(self, sandbox: bool) -> dict:
         self._query_api(sandbox)
