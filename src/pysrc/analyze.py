@@ -17,7 +17,8 @@ def main() -> None:
     correlation = np.corrcoef(predictions, targets)[0, 1]
     print("\nCorrelation = " + str(correlation) + "\n")
 
-#Correlation = 0.11231864302989218
+
+# Correlation = 0.11231864302989218
 
 if __name__ == "__main__":
     main()
