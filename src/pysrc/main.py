@@ -2,6 +2,7 @@ import argparse
 from pysrc import my_intern  # type: ignore
 import time
 
+from sklearn.preprocessing import StandardScaler
 from sklearn import linear_model  # type: ignore
 from sklearn.linear_model import Lasso  # type: ignore
 from pysrc.data_client import DataClient
@@ -11,7 +12,7 @@ if __name__ == "__main__":
     pass
 
 
-TIME_BETWEEN_TICKS: int = 30
+TIME_BETWEEN_TICKS: int = 90
 
 
 def write_to_file(filename: str, data: float) -> None:
@@ -66,7 +67,7 @@ def buffer(
         ]
     ).reshape(1, -1)
 
-    clf = linear_model.Lasso()
+    clf = linear_model.Lasso(alpha=1)
     clf.fit(X, targets)
     predictions = clf.predict(X_test)
     next_midprice = midprice * (1 + predictions[0])
@@ -118,8 +119,6 @@ def main() -> None:
             targets.append((trades_last_tick["midprice"] - curMidprice) / curMidprice)
         ticks.insert(len(ticks), tupleList)
         curMidprice = trades_last_tick["midprice"]
-
-        # print(str(len(ticks)) + " " + str(len(targets)))
         t += 1
         time.sleep(TIME_BETWEEN_TICKS)
 
