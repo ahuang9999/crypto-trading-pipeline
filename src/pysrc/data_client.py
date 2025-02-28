@@ -2,7 +2,7 @@ import requests  # type: ignore
 import json
 import time
 
-TIME_BETWEEN_TICKS = 6
+TIME_BETWEEN_TICKS = 30
 
 
 class DataClient:
