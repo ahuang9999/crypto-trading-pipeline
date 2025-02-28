@@ -2,7 +2,6 @@ import argparse
 from pysrc import my_intern  # type: ignore
 import time
 
-from sklearn.preprocessing import StandardScaler
 from sklearn import linear_model  # type: ignore
 from sklearn.linear_model import Lasso  # type: ignore
 from pysrc.data_client import DataClient
