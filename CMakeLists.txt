@@ -35,10 +35,11 @@ target_link_libraries(intern_project PRIVATE nlohmann_json::nlohmann_json)
 target_include_directories(intern_tests PUBLIC src)
 
 pybind11_add_module(my_intern src/cppsrc/main.cpp)
+target_link_libraries(my_intern PRIVATE ${Python3_LIBRARIES})
 target_link_libraries(my_intern PRIVATE Python3::Python)
 target_link_libraries(my_intern PRIVATE pybind11::pybind11)
 target_link_libraries(my_intern PRIVATE cpr::cpr)
 target_link_libraries(my_intern PRIVATE nlohmann_json::nlohmann_json)
-target_link_libraries(my_intern PRIVATE ${Python3_LIBRARIES})
+
 
 install(TARGETS my_intern DESTINATION my_intern)
