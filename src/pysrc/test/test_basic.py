@@ -9,11 +9,11 @@ def test_get_data(mocker: MockerFixture) -> None:
         {"price": "93030.33", "amount": "0.00001", "type": "sell"},
         {"price": "93030.33", "amount": "0.0001", "type": "sell"},
     ]
-    mock_data = {
-        "buys": [(95993.4, 0.00049765)],
-        "sells": [(93030.33, 0.00001), (93030.33, 0.0001)],
-        "midprice": 94511.86,
-    }
+    mock_data = (
+        [(95993.4, 0.00049765)],
+        [(93030.33, 0.00001), (93030.33, 0.0001)],
+        94511.86,
+    )
 
     mock_response = mocker.MagicMock()
     mock_response.json.return_value = mock_api_response

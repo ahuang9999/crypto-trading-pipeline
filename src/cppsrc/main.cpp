@@ -1,8 +1,10 @@
+#include "data_client.hpp"
 #include "fivetick_feature.hpp"
 #include "ntrades_feature.hpp"
 #include "pctbuy_feature.hpp"
 #include "pctsell_feature.hpp"
 #include <iostream>
+#include <pybind11/chrono.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
@@ -37,4 +39,7 @@ PYBIND11_MODULE(my_intern, m)
     py::class_<PercentBuyFeature, BaseFeature>(m, "PercentBuyFeature").def(py::init<>());
     py::class_<PercentSellFeature, BaseFeature>(m, "PercentSellFeature").def(py::init<>());
     py::class_<FiveTickVolumeFeature, BaseFeature>(m, "FiveTickVolumeFeature").def(py::init<>());
+    py::class_<DataClient>(m, "DataClient")
+      .def(py::init<>())
+      .def("get_data", &intproj::DataClient::get_data, py::arg("sandbox"));
 }

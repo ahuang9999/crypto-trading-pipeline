@@ -33,3 +33,13 @@ def test_5tickvolume() -> None:
     assert FiveTick_obj.compute_feature([(2, 1, False), (1, 1, True)]) == 8
     assert FiveTick_obj.compute_feature([(1, 1, False), (1, 1, True)]) == 9
     assert FiveTick_obj.compute_feature([(2, 1, False), (1, 1, True)]) == 10
+
+
+def test_cppdataclient() -> None:
+    obj = my_intern.DataClient()
+    data = obj.get_data(True)
+    assert isinstance(data[0], list)
+    assert isinstance(data[1], list)
+    assert isinstance(data[2], float)
+    assert len(data[0]) > 0
+    assert len(data[0]) > 0

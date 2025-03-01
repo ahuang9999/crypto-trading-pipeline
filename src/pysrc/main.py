@@ -11,12 +11,18 @@ if __name__ == "__main__":
     pass
 
 
-TIME_BETWEEN_TICKS: int = 90
+TIME_BETWEEN_TICKS: int = 30
 
 
 def write_to_file(filename: str, data: float) -> None:
     with open(filename, "a") as file:
         file.write("\n" + str(data))
+
+
+def call_cpp_api(sandbox: bool) -> tuple:
+    my_data_client = my_intern.DataClient()
+    ret: tuple = my_data_client.get_data(sandbox)
+    return ret
 
 
 FiveTick_obj = my_intern.FiveTickVolumeFeature()
@@ -86,38 +92,37 @@ def main() -> None:
     predictedMidprice: float = 2
 
     while True:
-        obj = DataClient()
-        trades_last_tick = obj.get_data(False)
-        if trades_last_tick["midprice"] == -2:
+        trades_last_tick = call_cpp_api(False)
+        if trades_last_tick[2] == -2:
             time.sleep(TIME_BETWEEN_TICKS)
             continue
 
         print("\nTime = " + str(t) + "")
         if predictedMidprice != 2:
-            print("Predicted midprice: " + str(predictedMidprice))
+            print("Predicted midprice: " + str(round(predictedMidprice, 2)))
             write_to_file(
                 "src/pysrc/targets.txt",
-                (trades_last_tick["midprice"] - curMidprice) / curMidprice,
+                (trades_last_tick[2] - curMidprice) / curMidprice,
             )
             write_to_file(
                 "src/pysrc/predictions.txt", predictedMidprice / curMidprice - 1
             )
 
-        print("Actual midprice: " + str(trades_last_tick["midprice"]))
+        print("Actual midprice: " + str(round(trades_last_tick[2], 2)))
         tupleList: list[tuple[float, float, bool]] = []
-        for data in trades_last_tick["buys"]:
+        for data in trades_last_tick[0]:
             # data is pair of buys,amounts
             tempTuple = (data[0], round(data[0] * data[1], 2), True)
             tupleList.append(tempTuple)
-        for data in trades_last_tick["sells"]:
+        for data in trades_last_tick[1]:
             # data is pair of sells,amounts
             tempTuple = (data[0], round(data[0] * data[1], 2), False)
             tupleList.append(tempTuple)
 
         if not curMidprice == -5000.0:
-            targets.append((trades_last_tick["midprice"] - curMidprice) / curMidprice)
+            targets.append((trades_last_tick[2] - curMidprice) / curMidprice)
         ticks.insert(len(ticks), tupleList)
-        curMidprice = trades_last_tick["midprice"]
+        curMidprice = trades_last_tick[2]
         t += 1
         time.sleep(TIME_BETWEEN_TICKS)
 
