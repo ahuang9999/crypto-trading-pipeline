@@ -48,6 +48,6 @@ class DataClient:
         else:
             self.midprice = round((lowestAsk + highestBid) / 2, 2)
 
-    def get_data(self, sandbox: bool) -> dict:
+    def get_data(self, sandbox: bool) -> tuple:
         self._query_api(sandbox)
-        return {"buys": self.buys, "sells": self.sells, "midprice": self.midprice}
+        return (self.buys, self.sells, self.midprice)

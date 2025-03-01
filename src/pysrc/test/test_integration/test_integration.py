@@ -3,7 +3,6 @@ import json
 import pytest
 
 
-# @pytest.mark.integration
 def test_integration_get_data() -> None:
     base_url = "https://api.gemini.com/v1"
     response = requests.get(base_url + "/trades/btcusd")
